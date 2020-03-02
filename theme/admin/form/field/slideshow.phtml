@@ -1,0 +1,31 @@
+<?php
+    $editor_id = $id . '-editor';
+    $adder_id  = $id . '-adder';
+    $value = (string)$value;
+    $attrs = [
+        'class'  => 'hidden admin-slideshow',
+        'id'     => $id,
+        'name'   => $field->name,
+        'data-editor' => '#' . $editor_id,
+        'data-adder'  => '#' . $adder_id
+    ];
+
+    // required
+    if(isset($rules->required) && $rules->required)
+        $attrs['required'] = null;
+    if(isset($rules->empty) && !$rules->empty)
+        $attrs['required'] = null;
+
+    \AdminUi\Library\Assets::addAsset('css', 'head', 'css/slideshow.css', '1');
+    \AdminUi\Library\Assets::addAsset('js', 'foot', 'js/slideshow.js', '1');
+?>
+<div class="form-group<?= ($error ? ' is-invalid' : '' ) ?>">
+    <?php if($show_label): ?>
+        <label for="<?= $id ?>"><?= $field->label ?></label>
+    <?php endif; ?>
+    <textarea<?= to_attr($attrs) ?>><?= hs($value ?? '') ?></textarea>
+    <div id="<?= $editor_id ?>"></div>
+    <div class="invalid-feedback"><?= ($error?$error->text:'') ?></div>
+
+    <button class="btn btn-secondary btn-block" id="<?= $adder_id ?>" type="button">Add Image</button>
+</div>
