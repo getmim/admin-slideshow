@@ -94,7 +94,7 @@ class AdminSlideshow{
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
-                                            <input type="url" class="form-control form-control-sm" data-slide="action" placeholder="Link" value="${safe.action}">
+                                            <input type="text" class="form-control form-control-sm" data-slide="action" placeholder="Link" value="${safe.action}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
